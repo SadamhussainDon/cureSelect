@@ -8,8 +8,11 @@ import {
 } from 'react-native';
 import Realm from 'realm';
 import {cureRealm, addPatientToRealm} from '../../reducer/Realm';
-import {RealmEx} from '../../reducer/RealmEx';
-const AddPatient = () => {
+import {addPatient} from '../../reducer/patientReducer';
+import {useDispatch} from 'react-redux';
+
+const AddPatient = ({navigation}) => {
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [gender, setGender] = useState('');
   const [dob, setDob] = useState('');
@@ -17,11 +20,7 @@ const AddPatient = () => {
   const [genderError, setGenderError] = useState('');
   const [dobError, setDobError] = useState('');
 
-  useEffect(() => {
-    RealmEx();
-  }, []);
-
-  const handleAddPatient = () => {
+  const handleAddPatient = async () => {
     let errors = false;
 
     if (!name) {
@@ -54,11 +53,12 @@ const AddPatient = () => {
         gender,
         dob: new Date(dob),
       };
-      addPatientToRealm(newPatient);
+      await dispatch(addPatient(newPatient));
       setName('');
       setGender('');
       setDob('');
       console.log('Patient added successfully');
+      navigation.navigate('Dashboard');
     }
   };
 

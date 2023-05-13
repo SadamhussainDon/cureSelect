@@ -6,6 +6,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import {addUserToRealm} from '../../reducer/Realm';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -23,13 +25,19 @@ const Login = ({navigation}) => {
     return regex.test(password);
   };
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (validateEmail() && validatePassword()) {
       // Perform login action
       console.log('Logged in!');
-      navigation.navigate('Dashboard', {
+      const user = {
         email: email,
-      }); // Navigating to the Dashboard screen and passing email and route as params
+        password: password,
+      };
+      await addUserToRealm(user);
+      await AsyncStorage.setItem('userEmail', email);
+
+      console.log('User added successfully');
+      navigation.navigate('Dashboard'); // Navigating to the Dashboard screen and passing email and route as params
     } else {
       // Show error message
       console.log('Invalid email or password!');

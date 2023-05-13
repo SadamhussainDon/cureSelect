@@ -1,15 +1,41 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useLayoutEffect, useCallback} from 'react';
+import {useFocusEffect} from '@react-navigation/native';
 import {StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
-import {useRoute} from '@react-navigation/native';
+import {GetPatientToRealm} from '../../reducer/Realm';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {getPatients} from '../../reducer/patientReducer';
+import {useDispatch} from 'react-redux';
 
 const Dashboard = ({navigation}) => {
+  const dispatch = useDispatch();
   const [patients, setPatients] = useState([]);
+  const [user, setUser] = useState(null);
+  const [people, setPeople] = useState([]);
 
-  const route = useRoute();
-  const email = route.params?.email;
+  // This function fetches the data from Realm and sets the state.
+  const fetchData = async () => {
+    const results = await GetPatientToRealm();
+    setPeople(results);
+    const userEmail = await AsyncStorage.getItem('userEmail');
+    setUser(userEmail);
+  };
+
+  // This hook will run every time the screen comes into focus.
+  useFocusEffect(
+    useCallback(() => {
+      fetchData();
+    }, []),
+  );
 
   const handleAddPatient = () => {
-    navigation.navigate('AddPatient'); // replace with your add patient component name
+    navigation.navigate('AddPatient');
+  };
+
+  // Logout function
+  const logout = async () => {
+    // Remove the user's email from async storage or other secure storage mechanism
+    await AsyncStorage.removeItem('userEmail');
+    navigation.navigate('Login');
   };
 
   return (
@@ -17,7 +43,7 @@ const Dashboard = ({navigation}) => {
       <View style={styles.logoutView}>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('Login');
+            logout();
           }}>
           <Image
             style={styles.logoutImage}
@@ -28,17 +54,19 @@ const Dashboard = ({navigation}) => {
         </TouchableOpacity>
       </View>
       <View style={styles.userCard}>
-        <Text style={styles.name}>{email.split('@')[0]}</Text>
-        <Text style={styles.email}>{email}</Text>
+        <Text style={styles.name}>{user}</Text>
+        <Text style={styles.email}>{user}</Text>
       </View>
       <TouchableOpacity style={styles.addButton} onPress={handleAddPatient}>
         <Text style={styles.buttonText}>Add Patient</Text>
       </TouchableOpacity>
       <View style={styles.patientList}>
-        {patients.map(patient => (
+        {people && people.map(patient => (
           <View key={patient.id} style={styles.patientCard}>
             <Text style={styles.patientName}>{patient.name}</Text>
-            <Text style={styles.patientDetails}>{patient.age} years old</Text>
+            <Text style={styles.patientDetails}>
+              {new Date(patient.dob).toLocaleDateString()}
+            </Text>
             <Text style={styles.patientDetails}>{patient.gender}</Text>
           </View>
         ))}
@@ -64,12 +92,12 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   name: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 5,
   },
   email: {
-    fontSize: 16,
+    fontSize: 14,
   },
   addButton: {
     width: '80%',

@@ -1,7 +1,7 @@
 import Realm from 'realm';
 
 const DogSchema = {
-  name: 'Dog',
+  name: 'my_patient_data',
   properties: {
     _id: 'objectId',
     name: 'string',
@@ -56,13 +56,13 @@ export async function RealmEx() {
 
   // Read all Dog objects
   function readAllDogs(realm) {
-    const allDogs = realm.objects('Dog');
+    const allDogs = realm.objects('my_patient_data');
     return allDogs;
   }
 
   // Update a Dog object
   async function updateDog(realm, dogId, name, age, breed) {
-    const dog = realm.objectForPrimaryKey('Dog', dogId);
+    const dog = realm.objectForPrimaryKey('my_patient_data', dogId);
     await realm.write(() => {
       dog.name = name;
       dog.age = age;
@@ -72,7 +72,7 @@ export async function RealmEx() {
 
   // Delete a Dog object
   async function deleteDog(realm, dogId) {
-    const dog = realm.objectForPrimaryKey('Dog', dogId);
+    const dog = realm.objectForPrimaryKey('my_patient_data', dogId);
     await realm.write(() => {
       realm.delete(dog);
     });

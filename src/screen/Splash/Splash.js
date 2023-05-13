@@ -1,10 +1,20 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, View, Image} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Splash = ({navigation}) => {
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate('Login');
+      const fetchSplash = async () => {
+        const userEmail = await AsyncStorage.getItem('userEmail');
+        console.log('User email:', userEmail);
+        if (userEmail === null) {
+          navigation.navigate('Login');
+        } else {
+          navigation.navigate('Dashboard');
+        }
+      };
+      fetchSplash()
     }, 2000); // replace 2000 with the time you want your splash screen to appear
   }, []);
 

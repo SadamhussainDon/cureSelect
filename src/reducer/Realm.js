@@ -1,7 +1,6 @@
 import Realm from 'realm';
 
 const PatientSchema = {
-  schemaVersion: 1, // update the schema version here
   name: 'Patient',
   primaryKey: 'id',
   properties: {
@@ -12,19 +11,45 @@ const PatientSchema = {
   },
 };
 
+const UserSchema = {
+  name: 'User',
+  properties: {
+    email: 'string',
+    password: 'string',
+  },
+};
 
-
-// Open the database and create a reference to the patient objects
-const cureRealm = new Realm({
-  schema: [PatientSchema],
-});
-
+async function openRealm() {
+  const realm = await Realm.open({
+    schema: [PatientSchema, UserSchema],
+  });
+  return realm;
+}
 // Define a function to add a new patient to the database
-const addPatientToRealm = patient => {
-  cureRealm.write(() => {
-    cureRealm.create('Patient', patient);
+export const addPatientToRealm = async patient => {
+  const realm = await openRealm();
+  realm.write(() => {
+    realm.create('Patient', patient);
   });
 };
 
+export const GetPatientToRealm = async () => {
+  const realm = await openRealm();
+  const patients = realm.objects('Patient');
+  return patients;
+};
+
+export const addUserToRealm = async user => {
+  console.log('Adding user to realm:', user);
+  const realm = await openRealm();
+  realm.write(() => {
+    realm.create('User', user);
+  });
+};
+
+export const getUserFromRealm = async email => {
+  const realm = await openRealm();
+  const user = realm.objects('User').filtered(`email = "${email}"`);
+  return user[0];
+};
 // Export the database reference and add patient function for use in other components
-export {cureRealm, addPatientToRealm};

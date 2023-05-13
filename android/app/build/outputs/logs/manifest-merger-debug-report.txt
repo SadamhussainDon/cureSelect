@@ -8,6 +8,7 @@ MERGED from /home/developer/Desktop/Project/CareSelect/android/app/src/main/Andr
 MERGED from [com.facebook.flipper:flipper-network-plugin:0.125.0] /home/developer/.gradle/caches/transforms-3/512e42cc0c381508f2d1b1ddcc0193bd/transformed/jetified-flipper-network-plugin-0.125.0/AndroidManifest.xml:8:1-15:12
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.125.0] /home/developer/.gradle/caches/transforms-3/db3a645b5c401b5669a12f79ae5c6c0c/transformed/jetified-flipper-fresco-plugin-0.125.0/AndroidManifest.xml:8:1-15:12
 MERGED from [com.facebook.flipper:flipper:0.125.0] /home/developer/.gradle/caches/transforms-3/1de5dee59d1627955e42d3d6205f726e/transformed/jetified-flipper-0.125.0/AndroidManifest.xml:8:1-18:12
+MERGED from [:react-native-async-storage_async-storage] /home/developer/Desktop/Project/CareSelect/node_modules/@react-native-async-storage/async-storage/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-safe-area-context] /home/developer/Desktop/Project/CareSelect/node_modules/react-native-safe-area-context/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-screens] /home/developer/Desktop/Project/CareSelect/node_modules/react-native-screens/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:realm] /home/developer/Desktop/Project/CareSelect/node_modules/realm/react-native/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-11:12
@@ -177,6 +178,8 @@ MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.125.0] /home/developer
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.125.0] /home/developer/.gradle/caches/transforms-3/db3a645b5c401b5669a12f79ae5c6c0c/transformed/jetified-flipper-fresco-plugin-0.125.0/AndroidManifest.xml:11:5-13:41
 MERGED from [com.facebook.flipper:flipper:0.125.0] /home/developer/.gradle/caches/transforms-3/1de5dee59d1627955e42d3d6205f726e/transformed/jetified-flipper-0.125.0/AndroidManifest.xml:11:5-13:41
 MERGED from [com.facebook.flipper:flipper:0.125.0] /home/developer/.gradle/caches/transforms-3/1de5dee59d1627955e42d3d6205f726e/transformed/jetified-flipper-0.125.0/AndroidManifest.xml:11:5-13:41
+MERGED from [:react-native-async-storage_async-storage] /home/developer/Desktop/Project/CareSelect/node_modules/@react-native-async-storage/async-storage/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-async-storage_async-storage] /home/developer/Desktop/Project/CareSelect/node_modules/@react-native-async-storage/async-storage/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-safe-area-context] /home/developer/Desktop/Project/CareSelect/node_modules/react-native-safe-area-context/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-safe-area-context] /home/developer/Desktop/Project/CareSelect/node_modules/react-native-safe-area-context/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-screens] /home/developer/Desktop/Project/CareSelect/node_modules/react-native-screens/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
