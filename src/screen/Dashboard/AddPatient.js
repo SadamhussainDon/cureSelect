@@ -58,7 +58,10 @@ const AddPatient = ({navigation}) => {
       setGender('');
       setDob('');
       console.log('Patient added successfully');
-      navigation.navigate('Dashboard');
+       navigation.reset({
+         index: 0,
+         routes: [{name: 'Dashboard'}],
+       });
     }
   };
 
@@ -69,6 +72,7 @@ const AddPatient = ({navigation}) => {
         placeholder="Name"
         value={name}
         onChangeText={text => setName(text)}
+        placeholderTextColor={'#000'}
       />
       {nameError ? <Text style={styles.error}>{nameError}</Text> : null}
 
@@ -77,6 +81,7 @@ const AddPatient = ({navigation}) => {
         placeholder="Gender"
         value={gender}
         onChangeText={text => setGender(text)}
+        placeholderTextColor={'#000'}
       />
       {genderError ? <Text style={styles.error}>{genderError}</Text> : null}
 
@@ -85,6 +90,7 @@ const AddPatient = ({navigation}) => {
         placeholder="Date of Birth"
         value={dob}
         onChangeText={text => setDob(text)}
+        placeholderTextColor={'#000'}
       />
       {dobError ? <Text style={styles.error}>{dobError}</Text> : null}
 
@@ -111,6 +117,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 10,
     marginBottom: 20,
+    color: '#000',
   },
   error: {
     color: 'red',

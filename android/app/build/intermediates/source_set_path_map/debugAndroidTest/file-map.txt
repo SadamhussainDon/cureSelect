@@ -1,0 +1,7 @@
+com.careselect.test.app-androidTest-0 /home/developer/Desktop/Project/CareSelect/android/app/build/generated/res/resValues/androidTest/debug
+com.careselect.test.app-androidTest-1 /home/developer/Desktop/Project/CareSelect/android/app/build/generated/res/rs/androidTest/debug
+com.careselect.test.app-mergeDebugAndroidTestResources-2 /home/developer/Desktop/Project/CareSelect/android/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
+com.careselect.test.app-mergeDebugAndroidTestResources-3 /home/developer/Desktop/Project/CareSelect/android/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
+com.careselect.test.app-merged_res-4 /home/developer/Desktop/Project/CareSelect/android/app/build/intermediates/merged_res/debugAndroidTest
+com.careselect.test.app-androidTest-5 /home/developer/Desktop/Project/CareSelect/android/app/src/androidTest/res
+com.careselect.test.app-androidTestDebug-6 /home/developer/Desktop/Project/CareSelect/android/app/src/androidTestDebug/res

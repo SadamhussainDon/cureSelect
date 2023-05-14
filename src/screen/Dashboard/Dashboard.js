@@ -35,7 +35,10 @@ const Dashboard = ({navigation}) => {
   const logout = async () => {
     // Remove the user's email from async storage or other secure storage mechanism
     await AsyncStorage.removeItem('userEmail');
-    navigation.navigate('Login');
+    navigation.reset({
+      index: 0,
+      routes: [{name: 'Login'}],
+    });
   };
 
   return (
@@ -61,15 +64,16 @@ const Dashboard = ({navigation}) => {
         <Text style={styles.buttonText}>Add Patient</Text>
       </TouchableOpacity>
       <View style={styles.patientList}>
-        {people && people.map(patient => (
-          <View key={patient.id} style={styles.patientCard}>
-            <Text style={styles.patientName}>{patient.name}</Text>
-            <Text style={styles.patientDetails}>
-              {new Date(patient.dob).toLocaleDateString()}
-            </Text>
-            <Text style={styles.patientDetails}>{patient.gender}</Text>
-          </View>
-        ))}
+        {people &&
+          people.map(patient => (
+            <View key={patient.id} style={styles.patientCard}>
+              <Text style={styles.patientName}>{patient.name}</Text>
+              <Text style={styles.patientDetails}>
+                {new Date(patient.dob).toLocaleDateString()}
+              </Text>
+              <Text style={styles.patientDetails}>{patient.gender}</Text>
+            </View>
+          ))}
       </View>
     </View>
   );
@@ -95,9 +99,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 5,
+    color: '#000',
   },
   email: {
     fontSize: 14,
+    color: '#000',
   },
   addButton: {
     width: '80%',
@@ -129,9 +135,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 5,
+    color: '#000',
   },
   patientDetails: {
     fontSize: 14,
+    color: '#000',
   },
   logoutImage: {
     width: 25,

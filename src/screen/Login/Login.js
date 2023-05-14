@@ -54,6 +54,7 @@ const Login = ({navigation}) => {
         onChangeText={setEmail}
         keyboardType="email-address"
         autoCapitalize="none"
+        placeholderTextColor={'#000'}
       />
       {!validateEmail() && email !== '' && (
         <Text style={styles.error}>Please enter a valid email address</Text>
@@ -64,6 +65,7 @@ const Login = ({navigation}) => {
         value={password}
         onChangeText={setPassword}
         secureTextEntry
+        placeholderTextColor={'#000'}
       />
       {!validatePassword() && password !== '' && (
         <Text style={styles.error}>
@@ -89,6 +91,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 30,
+    color: '#000',
   },
   input: {
     width: '80%',
@@ -99,6 +102,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     paddingLeft: 10,
     fontSize: 16,
+    color: '#000',
   },
   error: {
     color: 'red',
