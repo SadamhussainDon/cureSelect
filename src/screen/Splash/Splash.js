@@ -9,12 +9,18 @@ const Splash = ({navigation}) => {
         const userEmail = await AsyncStorage.getItem('userEmail');
         console.log('User email:', userEmail);
         if (userEmail === null) {
-          navigation.navigate('Login');
+          navigation.reset({
+            index: 0,
+            routes: [{name: 'Login'}],
+          });
         } else {
-          navigation.navigate('Dashboard');
+          navigation.reset({
+            index: 0,
+            routes: [{name: 'Dashboard'}],
+          });
         }
       };
-      fetchSplash()
+      fetchSplash();
     }, 2000); // replace 2000 with the time you want your splash screen to appear
   }, []);
 
